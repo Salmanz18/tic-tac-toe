@@ -46,6 +46,11 @@ const gameSlice = createSlice({
       state.isXNext = !state.isXNext;
       state.winner = calculateWinner(state.gameBoard);
     },
+    reset: (state) => {
+      state.gameBoard = Array(9).fill(null);
+      state.winner = '';
+      state.isXNext = false;
+    },
   },
 });
 

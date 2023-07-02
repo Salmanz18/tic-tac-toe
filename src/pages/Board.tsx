@@ -45,6 +45,10 @@ function Board() {
     return `Next Player : ${playerValue}`;
   };
 
+  const onResetClick = () => {
+    dispatch(gameActions.reset());
+  };
+
   return (
     <StyledBoard>
       <h2>{gameStats()}</h2>
@@ -63,7 +67,7 @@ function Board() {
         <Block onClick={() => onBlockClick(7)} value={gameBoard[7]} />
         <Block onClick={() => onBlockClick(8)} value={gameBoard[8]} />
       </StyledBoardRow>
-      <Button text="Reset" />
+      <Button text="Reset" onClick={onResetClick} />
     </StyledBoard>
   );
 }
