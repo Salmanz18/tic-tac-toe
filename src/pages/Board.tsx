@@ -10,7 +10,7 @@ const StyledBoard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20vh;
+  margin-top: 10vh;
 `;
 
 const StyledBoardRow = styled.div`
