@@ -1,20 +1,15 @@
 # Tic Tac Toe
 
 ## Tech Stack
+
 - React
 - Typescript
 - Redux Toolkit
-- React Query
 - Styled Components
-
 
 ## Usage
 
 ```bash
-# Required if you want a repository and work with Git hooks
-
-git init
-
 yarn install
 
 yarn dev
