@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Block from '../components/Block';
 import { gameActions } from '../redux/gameSlice';
 import { RootState } from '../redux/store';
+import Button from '../components/Button';
 
 const StyledBoard = styled.div`
   display: flex;
@@ -23,9 +24,6 @@ function Board() {
   const gameBoard = useSelector((state: RootState) => state.game.gameBoard);
   const winner = useSelector((state: RootState) => state.game.winner);
 
-  // eslint-disable-next-line no-console
-  console.log(winner);
-
   const dispatch = useDispatch();
 
   const playerValue = nextPlayer ? 'X' : 'O';
@@ -37,8 +35,19 @@ function Board() {
     return dispatch(gameActions.updateBlock({ index, value: playerValue }));
   };
 
+  const gameStats = () => {
+    if (winner === 'X' || winner === 'O') {
+      return `Player ${winner} Wins!`;
+    }
+    if (winner === 'tie') {
+      return "It's a tie!";
+    }
+    return `Next Player : ${playerValue}`;
+  };
+
   return (
     <StyledBoard>
+      <h2>{gameStats()}</h2>
       <StyledBoardRow>
         <Block onClick={() => onBlockClick(0)} value={gameBoard[0]} />
         <Block onClick={() => onBlockClick(1)} value={gameBoard[1]} />
@@ -54,6 +63,7 @@ function Board() {
         <Block onClick={() => onBlockClick(7)} value={gameBoard[7]} />
         <Block onClick={() => onBlockClick(8)} value={gameBoard[8]} />
       </StyledBoardRow>
+      <Button text="Reset" />
     </StyledBoard>
   );
 }

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   gameBoard: Array(9).fill(null),
   isXNext: false,
-  winner: false,
+  winner: '',
 };
 
 const WINNING_COMBINATIONS = [
