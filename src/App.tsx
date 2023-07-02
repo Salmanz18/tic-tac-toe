@@ -1,7 +1,12 @@
 import './App.css';
+import Board from './pages/Board';
 
 function App() {
-  return <h1 className="App">Tic Tac Toe</h1>;
+  return (
+    <div className="App">
+      <Board />
+    </div>
+  );
 }
 
 export default App;
