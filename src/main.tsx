@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { Provider } from 'react-redux';
