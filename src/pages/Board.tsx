@@ -4,6 +4,7 @@ import Block from '../components/Block';
 import { gameActions } from '../redux/gameSlice';
 import { RootState } from '../redux/store';
 import Button from '../components/Button';
+import { Players } from '../enums/Players';
 
 const StyledBoard = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ function Board() {
 
   const dispatch = useDispatch();
 
-  const playerValue = nextPlayer ? 'X' : 'O';
+  const playerValue = nextPlayer ? Players.PLAYER_2 : Players.PLAYER_1;
 
   const onBlockClick = (index: number) => {
     if (gameBoard[index] !== null) {
@@ -36,13 +37,13 @@ function Board() {
   };
 
   const gameStats = () => {
-    if (winner === 'X' || winner === 'O') {
+    if (winner === Players.PLAYER_2 || winner === Players.PLAYER_1) {
       return `Player ${winner} Wins!`;
     }
     if (winner === 'tie') {
       return "It's a tie!";
     }
-    return `Next Player : ${playerValue}`;
+    return `Current Player : ${playerValue}`;
   };
 
   const onResetClick = () => {
