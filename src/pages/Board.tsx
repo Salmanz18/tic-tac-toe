@@ -6,18 +6,22 @@ import { RootState } from '../redux/store';
 import Button from '../components/Button';
 import { Players } from '../enums/Players';
 
-const StyledBoard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10vh;
+const StyledGameScreen = styled.div`
+  text-align: center;
+  margin-top: 5rem;
+  > h2 {
+    margin-bottom: 2rem;
+  }
+  > Button {
+    margin-top: 2rem;
+  }
 `;
 
-const StyledBoardRow = styled.div`
-  display: flex;
-  font-weight: bolder;
-  font-size: 1.5rem;
+const StyledBoard = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 7rem);
+  place-items: center;
+  justify-content: center;
 `;
 
 function Board() {
@@ -51,25 +55,15 @@ function Board() {
   };
 
   return (
-    <StyledBoard>
+    <StyledGameScreen>
       <h2>{gameStats()}</h2>
-      <StyledBoardRow>
-        <Block onClick={() => onBlockClick(0)} value={gameBoard[0]} />
-        <Block onClick={() => onBlockClick(1)} value={gameBoard[1]} />
-        <Block onClick={() => onBlockClick(2)} value={gameBoard[2]} />
-      </StyledBoardRow>
-      <StyledBoardRow>
-        <Block onClick={() => onBlockClick(3)} value={gameBoard[3]} />
-        <Block onClick={() => onBlockClick(4)} value={gameBoard[4]} />
-        <Block onClick={() => onBlockClick(5)} value={gameBoard[5]} />
-      </StyledBoardRow>
-      <StyledBoardRow>
-        <Block onClick={() => onBlockClick(6)} value={gameBoard[6]} />
-        <Block onClick={() => onBlockClick(7)} value={gameBoard[7]} />
-        <Block onClick={() => onBlockClick(8)} value={gameBoard[8]} />
-      </StyledBoardRow>
+      <StyledBoard>
+        {gameBoard.map((blockValue, idx) => {
+          return <Block key={idx} onClick={() => onBlockClick(idx)} value={blockValue} />;
+        })}
+      </StyledBoard>
       <Button text="Reset" onClick={onResetClick} />
-    </StyledBoard>
+    </StyledGameScreen>
   );
 }
 

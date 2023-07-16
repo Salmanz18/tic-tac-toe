@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { styled } from 'styled-components';
 
 const StyledBlock = styled.div`
@@ -10,7 +9,7 @@ const StyledBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 3px;
+  box-shadow: 5px 5px 5px #888;
   > p {
     font-size: 6.5rem;
   }
@@ -19,7 +18,6 @@ const StyledBlock = styled.div`
 interface BlockProps {
   value?: string | null;
   onClick?: () => void;
-  children?: ReactNode;
 }
 
 function Block({ value, onClick }: BlockProps) {
