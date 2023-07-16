@@ -5,6 +5,7 @@ import { gameActions } from '../redux/gameSlice';
 import { RootState } from '../redux/store';
 import Button from '../components/Button';
 import { Players } from '../enums/Players';
+import { Confetti } from '../components/Confetti';
 
 const StyledGameScreen = styled.div`
   text-align: center;
@@ -45,7 +46,7 @@ function Board() {
       return `Player ${winner} Wins!`;
     }
     if (winner === 'tie') {
-      return "It's a tie!";
+      return "It's a Tie!";
     }
     return `Current Player : ${playerValue}`;
   };
@@ -56,13 +57,15 @@ function Board() {
 
   return (
     <StyledGameScreen>
-      <h2>{gameStats()}</h2>
-      <StyledBoard>
-        {gameBoard.map((blockValue, idx) => {
-          return <Block key={idx} onClick={() => onBlockClick(idx)} value={blockValue} />;
-        })}
-      </StyledBoard>
-      <Button text="Reset" onClick={onResetClick} />
+      <Confetti isVisible={Boolean(winner === Players.PLAYER_2 || winner === Players.PLAYER_1)}>
+        <h2>{gameStats()}</h2>
+        <StyledBoard>
+          {gameBoard.map((blockValue, idx) => {
+            return <Block key={idx} onClick={() => onBlockClick(idx)} value={blockValue} />;
+          })}
+        </StyledBoard>
+        <Button text="Reset" onClick={onResetClick} />
+      </Confetti>
     </StyledGameScreen>
   );
 }
